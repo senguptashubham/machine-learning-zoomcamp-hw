@@ -2,5 +2,13 @@
 {
   "name": "ml-zoomcamp environment",
   "image": "mcr.microsoft.com/devcontainers/python:1-3.11",
-  "postCreateCommand": "conda env create -f environment.yml && conda run -n ml-zoomcamp python -m ipykernel install --user --name ml-zoomcamp --display-name 'ml-zoomcamp'"
+  "postCreateCommand": "conda env create -f environment.yml && conda run -n ml-zoomcamp python -m ipykernel install --user --name ml-zoomcamp --display-name 'ml-zoomcamp'",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ]
+    }
+  }
 }
