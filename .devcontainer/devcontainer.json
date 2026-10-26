@@ -1,6 +1,9 @@
 {
   "name": "ML Zoomcamp",
   "image": "mcr.microsoft.com/devcontainers/miniconda:1-3",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  },
   "postCreateCommand": "bash .devcontainer/post-create.sh",
   "customizations": {
     "vscode": {

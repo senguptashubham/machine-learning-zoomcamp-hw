@@ -1,20 +1,24 @@
 #!/usr/bin/env bash
 set -e
 
-# 1. Create or update the ml-zoomcamp conda environment (includes uv via pip)
+# 1. Create or update the ml-zoomcamp conda environment
 if /opt/conda/bin/conda env list | grep -qE '^[[:space:]]*ml-zoomcamp[[:space:]]'; then
     /opt/conda/bin/conda env update -n ml-zoomcamp -f environment.yml
 else
     /opt/conda/bin/conda env create -f environment.yml
 fi
 
-# 2. Register the Jupyter kernel
+# 2. Install uv binary directly into the ml-zoomcamp environment's bin folder
+#    (Works in both terminal AND Jupyter notebook !uv cells automatically)
+curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR="/opt/conda/envs/ml-zoomcamp/bin" UV_NO_MODIFY_PATH=1 sh
+
+# 3. Register the Jupyter kernel
 /opt/conda/bin/conda run -n ml-zoomcamp python -m ipykernel install \
     --user \
     --name ml-zoomcamp \
     --display-name "Python (ml-zoomcamp)"
 
-# 3. Initialize conda and auto-activate ml-zoomcamp in ~/.bashrc
+# 4. Initialize conda and auto-activate ml-zoomcamp in ~/.bashrc
 /opt/conda/bin/conda init bash
 
 INIT_LINE='source /opt/conda/etc/profile.d/conda.sh && conda activate ml-zoomcamp'
