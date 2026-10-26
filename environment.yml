@@ -2,10 +2,11 @@ name: ml-zoomcamp
 channels:
   - defaults
 dependencies:
-  - python=3.11
+  - python=3.11.15
   - scikit-learn
   - numpy
   - seaborn
   - jupyter
   - pandas
   - ipykernel
+  - flask
