@@ -10,4 +10,6 @@ dependencies:
   - pandas
   - ipykernel
   - flask
-  - uv
+  - pip
+  - pip:
+      - uv
